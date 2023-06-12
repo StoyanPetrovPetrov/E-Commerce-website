@@ -77,7 +77,8 @@ const routes: Routes = [
     ReactiveFormsModule,
     OktaAuthModule
   ],
-  providers: [ProductService,{ provide: OKTA_CONFIG, useValue: { oktaAuth }}],
+ providers: [ProductService,{ provide: OKTA_CONFIG, useValue: { oktaAuth }},
+              {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptorService,multi: true}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
